@@ -5,6 +5,7 @@ body {
 }
 
 a {
+  font: 30px "Serif";
   color: #00B7FF;
 }
 
@@ -12,7 +13,7 @@ h1{
   color: #e2b21d;  font: 60px "Serif";text-align: center;
 }
 
-div.a
+div.b
 {
     font: 25px "times New Roman";
 }
