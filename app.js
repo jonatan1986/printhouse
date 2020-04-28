@@ -11,12 +11,14 @@ var methodOverride = require('method-override');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var errorHandler = require('errorhandler');
+var routes = require('./routes/index');
 var router = express.Router();
 var app = express();
 
 //=============GET Variants================
-var homepage = require('./routes/homepage');
-app.get('/homepage',homepage.form);
+// var homepage = require('./routes/homepage');
+// app.get('/homepage',homepage.form);
+app.use('/', routes);
 
 //==========================================
 

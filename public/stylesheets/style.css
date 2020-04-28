@@ -13,7 +13,7 @@
   top:15px;
   right:-200px;
   width:200px;
-  height:200px;
+  height:100%;
   background: #151719;
   transition: all 500ms linear;
 }
@@ -28,6 +28,8 @@
   list-style:none;
   padding:15px 80px;
   border-buttom: 1px solid rgba(100,100,100,0.3);
+  direction: rtl;
+  font: 20px "Serif";
 }
 
 #sidebar .toggle-btn{
@@ -59,13 +61,21 @@ body {
   background-color: #666699
 }
 
-a {
+/* a {
   font: 30px "Serif";
   color: #00B7FF;
-}
+} */
+
+/* a:hover {
+   background-color: yellow;
+} */
 
 h1{
   color: #e2b21d;  font: 60px "Serif";text-align: center;
+}
+
+#contacttitle h1{
+    color: #5650ff;  font: 60px "Serif";text-align: center;
 }
 
 div.b
@@ -73,10 +83,9 @@ div.b
     font: 25px "times New Roman";
 }
 
-#mySidenav
-{
-  display: block;
-  position: absolute;
-  top: 50px;
-  right: 50px;
-}
+/* #contactdetails{
+  position:fixed;
+  right:70px;
+  top:100px;
+  /* padding:15px 80px; */
+} */

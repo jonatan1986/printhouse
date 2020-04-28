@@ -1,25 +1,57 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8">
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <style>
+    div.sidenav {
+      text-align: right;
+    }
+     div.b {
+          text-align: center;
+     }
+    </style>
   </head>
   <body>
-      <div id = "sidebar">
-        <div class = "toggle-btn" onclick="toggleSidebar()">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-        <ul>
-          <li>home</li>
-          <li>about</li>
-        </ul>
+    <div id = "sidebar">
+      <div class = "toggle-btn" onclick="toggleSidebar()">
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
-      <script>
-        function toggleSidebar(){
-          document.getElementById("sidebar").classList.toggle('active');
-        }
-      </script>
+      <ul dir="rtl">
+        <li> <a href="/homepage"  style="color:white;">מי אנחנו </a> </li>
+        <li> <a href=""  style="color:white;">בצע הזמנה </a> </li>
+        <li> <a href=""  style="color:white;">בדוק סטטוס הזמנה </a> </li>
+        <li> <a href="/contact"  style="color:white;" >צור קשר </a> </li>
+        <!-- <li><a href="">מי אנחנו  </a> </li>
+        <li> <a href="">צור קשר  </a> </li> -->
+        <!-- <li> מי אנחנו  </li> -->
+        <!-- <li> צור קשר  </li> -->
+      </ul>
+    </div>
+    <script>
+      function toggleSidebar(){
+        document.getElementById("sidebar").classList.toggle('active');
+      }
+      function changeBcGrndClr(){
+
+      }
+    </script>
+  <!-- <span class="c" style=";font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span> -->
+      <h1><%= title %></h1>
+
+
+    <div class="b">
+      <img src ='/photos/printer.jpg'/>
+      <p >
+:כבר 30 שנים מדפיסים איכות ברמת גימור גבוהה עד הפרטים הקטנים. אנו מציעים ללקוחותינו
+<br>סטנדרט איכות גבוה. זמני אספקה קצרים ואפשרות לשילוח ברחבי הארץ. בין עולמות הפעילות שלנו
+<br>המגזר העסקי ןסקטור החינוך, כל אחד עם מגוון הפקות בהתאמה לצרכי הלקוח
+<br>.בין היתר ניתן לבצע הזמנות אונליין
+      </p>
+    </div>
+
   </body>
   </html>

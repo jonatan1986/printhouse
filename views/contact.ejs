@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <style>
+    body {
+  background-color: coral;
+}
+    div.contactdetails{
+      text-align: center;
+      font: 25px "times New Roman";
+      color:blue;
+    }
+    div.pic{
+      position: relative;
+      text-align: center;
+      top:25px;
+    }
+    </style>
+  </head>
+  <div id = "sidebar">
+    <div class = "toggle-btn" onclick="toggleSidebar()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul dir="rtl">
+      <li> <a href="/homepage"  style="color:white;">מי אנחנו </a> </li>
+      <li> <a href=""  style="color:white;">בצע הזמנה </a> </li>
+      <li> <a href=""  style="color:white;">בדוק סטטוס הזמנה </a> </li>
+      <li> <a href="/contact"  style="color:white;" >צור קשר </a> </li>
+      <!-- <li><a href="">מי אנחנו  </a> </li>
+      <li> <a href="">צור קשר  </a> </li> -->
+      <!-- <li> מי אנחנו  </li> -->
+      <!-- <li> צור קשר  </li> -->
+    </ul>
+  </div>
+  <script>
+    function toggleSidebar(){
+      document.getElementById("sidebar").classList.toggle('active');
+    }
+    function changeBcGrndClr(){
+
+    }
+  </script>
+  <div id="contacttitle">
+    <h1><%= title %></h1>
+  </div>
+<div class="contactdetails">
+  <p dir="rtl"> כתובת:אפ"ק 5, תל אביב יפו</p>
+  <p dir="rtl">טלפון:035555555</p>
+  <p dir="rtl"> תודה רבה שביקרתם באתר שלנו, נשמח לשמוע ממכם</p>
+</div>
+<div class="pic">
+  <img src ='/photos/printer2.jpg'/>
+</div>
+  <body>
+  </body>
+  </html>
