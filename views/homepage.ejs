@@ -3,34 +3,23 @@
   <head>
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
-    <style>
-    div.sidenav {
-      text-align: right;
-    }
-     div.b {
-          text-align: center;
-     }
-    </style>
   </head>
   <body>
-    <div class="sidenav">
-    <nav>
-      <ul>
-        <ul><a href="">מי אנחנו </a></ul>
-        <ul><a href=""> צור קשר </a></ul>
-      </ul>
-    </nav>
-  </div>
-      <h1><%= title %></h1>
-    <div class="b">
-      <img src ='/photos/printer.jpg'/>
-      <p >
-:כבר 30 שנים מדפיסים איכות ברמת גימור גבוהה עד הפרטים הקטנים. אנו מציעים ללקוחותינו
-<br>סטנדרט איכות גבוה. זמני אספקה קצרים ואפשרות לשילוח ברחבי הארץ. בין עולמות הפעילות שלנו
-<br>המגזר העסקי ןסקטור החינוך, כל אחד עם מגוון הפקות בהתאמה לצרכי הלקוח
-<br>.בין היתר ניתן לבצע הזמנות אונליין
-      </p>
-    </div>
-
+      <div id = "sidebar">
+        <div class = "toggle-btn" onclick="toggleSidebar()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <ul>
+          <li>home</li>
+          <li>about</li>
+        </ul>
+      </div>
+      <script>
+        function toggleSidebar(){
+          document.getElementById("sidebar").classList.toggle('active');
+        }
+      </script>
   </body>
   </html>

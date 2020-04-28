@@ -1,3 +1,58 @@
+
+*{
+  margin: 0px;
+  padding: 0px;
+  font-family: sans-serif;
+  list-style-type: none;
+}
+
+
+
+#sidebar {
+  position:fixed;
+  top:15px;
+  right:-200px;
+  width:200px;
+  height:200px;
+  background: #151719;
+  transition: all 500ms linear;
+}
+
+#sidebar.active{
+  right:0px;
+}
+
+#sidebar ul li
+{
+  color:rgba(230,230,230,0.9);
+  list-style:none;
+  padding:15px 80px;
+  border-buttom: 1px solid rgba(100,100,100,0.3);
+}
+
+#sidebar .toggle-btn{
+  position: absolute;
+  right:220px;
+  top:20px;
+}
+
+#sidebar .toggle-btn span{
+
+  display: block;
+  width: 30px;
+  height: 5px;
+  background: #151719;
+  margin:5px 0px;
+}
+
+
+
+
+
+
+
+
+
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -16,4 +71,12 @@ h1{
 div.b
 {
     font: 25px "times New Roman";
+}
+
+#mySidenav
+{
+  display: block;
+  position: absolute;
+  top: 50px;
+  right: 50px;
 }
