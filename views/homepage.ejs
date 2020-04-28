@@ -5,43 +5,19 @@
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <style>
-    div.sidenav {
+    /* div.sidenav {
       text-align: right;
-    }
+    } */
      div.b {
+          color:#a16107;
+          font: 25px "times New Roman";
           text-align: center;
      }
     </style>
   </head>
   <body>
-    <div id = "sidebar">
-      <div class = "toggle-btn" onclick="toggleSidebar()">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-      <ul dir="rtl">
-        <li> <a href="/homepage"  style="color:white;">מי אנחנו </a> </li>
-        <li> <a href=""  style="color:white;">בצע הזמנה </a> </li>
-        <li> <a href=""  style="color:white;">בדוק סטטוס הזמנה </a> </li>
-        <li> <a href="/contact"  style="color:white;" >צור קשר </a> </li>
-        <!-- <li><a href="">מי אנחנו  </a> </li>
-        <li> <a href="">צור קשר  </a> </li> -->
-        <!-- <li> מי אנחנו  </li> -->
-        <!-- <li> צור קשר  </li> -->
-      </ul>
-    </div>
-    <script>
-      function toggleSidebar(){
-        document.getElementById("sidebar").classList.toggle('active');
-      }
-      function changeBcGrndClr(){
-
-      }
-    </script>
-  <!-- <span class="c" style=";font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span> -->
+    <% include topmenu %>
       <h1><%= title %></h1>
-
 
     <div class="b">
       <img src ='/photos/printer.jpg'/>

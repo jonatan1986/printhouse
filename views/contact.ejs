@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
+     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <style>
     body {
@@ -9,7 +9,7 @@
 }
     div.contactdetails{
       text-align: center;
-      font: 25px "times New Roman";
+      font: 20px "Serif";
       color:blue;
     }
     div.pic{
@@ -17,44 +17,27 @@
       text-align: center;
       top:25px;
     }
+    div.contact{
+      text-align: center;
+      font: 20px “Helvetica Neue”;
+      color:purple;
+    }
     </style>
   </head>
-  <div id = "sidebar">
-    <div class = "toggle-btn" onclick="toggleSidebar()">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    <ul dir="rtl">
-      <li> <a href="/homepage"  style="color:white;">מי אנחנו </a> </li>
-      <li> <a href=""  style="color:white;">בצע הזמנה </a> </li>
-      <li> <a href=""  style="color:white;">בדוק סטטוס הזמנה </a> </li>
-      <li> <a href="/contact"  style="color:white;" >צור קשר </a> </li>
-      <!-- <li><a href="">מי אנחנו  </a> </li>
-      <li> <a href="">צור קשר  </a> </li> -->
-      <!-- <li> מי אנחנו  </li> -->
-      <!-- <li> צור קשר  </li> -->
-    </ul>
-  </div>
-  <script>
-    function toggleSidebar(){
-      document.getElementById("sidebar").classList.toggle('active');
-    }
-    function changeBcGrndClr(){
+    <body>
 
-    }
-  </script>
+  <% include topmenu %>
+
   <div id="contacttitle">
     <h1><%= title %></h1>
   </div>
-<div class="contactdetails">
-  <p dir="rtl"> כתובת:אפ"ק 5, תל אביב יפו</p>
-  <p dir="rtl">טלפון:035555555</p>
-  <p dir="rtl"> תודה רבה שביקרתם באתר שלנו, נשמח לשמוע ממכם</p>
+<div class = "contact" >
+  <p>כתובת:אפ"ק 5, תל אביב יפו </p>
+  <p>טלפון:035555555</p>
+  <p>תודה רבה שביקרתם באתר שלנו, נשמח לשמוע ממכם</p>
 </div>
 <div class="pic">
   <img src ='/photos/printer2.jpg'/>
 </div>
-  <body>
   </body>
   </html>
