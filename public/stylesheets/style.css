@@ -1,4 +1,59 @@
-@import url(http://fonts.googleapis.com/earlyaccess/alefhebrew.css);
+
+/* נא מלא את הפרטים על מנת לפתוח חשבון */
+.regitserTitle
+{
+  position: fixed;
+  top:160px;
+  right:630px;
+  font:bold 17px/30px "times New Roman";
+}
+
+#register .username{
+  position: fixed;
+  top:240px;
+  right:630px;
+}
+#register .password{
+  position: fixed;
+  top:280px;
+  right:630px;
+}
+
+#register .openaccount{
+  position: fixed;
+  top:320px;
+  right:630px;
+}
+
+#menu .login{ /*התחבר */
+  position: fixed;
+  top:120px;
+  left:242px;
+  font:bold 20px/30px "times New Roman";
+}
+
+#menu .register{  /*פתח חשבון */
+  position: fixed;
+  top:80px;
+  left:208px;
+  font:bold 20px/30px "times New Roman";
+}
+
+/* פתיחת חשבון */
+#openaccount h1{
+  position: fixed;
+  top:80px;
+  right:630px;
+  color: #106ba8;
+  font:bold 60px "times New Roman";
+}
+
+#message{
+  position: fixed;
+  font:  bold 20px/30px "times New Roman";
+  top:200px;
+  right:630px;
+}
 
 *{
   margin: 0px;

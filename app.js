@@ -14,13 +14,9 @@ var errorHandler = require('errorhandler');
 var routes = require('./routes/index');
 var router = express.Router();
 var app = express();
+var messages = require('./lib/messages');
 
-//=============GET Variants================
-// var homepage = require('./routes/homepage');
-// app.get('/homepage',homepage.form);
-app.use('/', routes);
 
-//==========================================
 
 // all environments
 app.set('port', process.env.PORT || 3000);
@@ -43,6 +39,16 @@ app.use(session({
 
 app.use(methodOverride());
 app.use(express.static(path.join(__dirname, '/public')));
+
+
+//=============GET Variants================
+// var homepage = require('./routes/homepage');
+// app.get('/homepage',homepage.form);
+app.use(messages);
+app.use('/', routes);
+var register = require('./routes/register');
+app.post('/register',register.submit);
+//==========================================
 
 router.use(function (req, res, next){
 // console.log("router js res.statuscode down ",res.statusCode);

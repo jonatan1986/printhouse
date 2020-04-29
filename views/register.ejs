@@ -1,27 +1,53 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <% include menu %>
+  <html>
+    <head>
+      <title><%= title %></title>
+      <link rel='stylesheet' href='/stylesheets/style.css' />
+      <style>
+           body {
+            background-image: url("/photos/printer3.jpg");
+            /* background-size: cover; */
+            height: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            /* background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat; */
+          }
+      </style>
+    </head>
+    <body>
+      <% include topmenu %>
+      <% include menu %>
+    <div id="openaccount">
+      <h1><%= title %></h1>
+  </div>
+    <div class="content">
+      <div class="regitserTitle">
+       <p> .נא מלא את הפרטים על מנת לפתוח חשבון</p>
+     </div>
 
-    <h1><%= title %></h1>
-    <p>Fill in the form below to sign up!</p>
-
-     <% include messages %>
-
-    <form action='/register' method='post'>
-      <p>
-        <input type='text' name='user[name]' placeholder='Username' />
-      </p>
-      <p>
-        <input type='password' name='user[pass]' placeholder='Password' />
-      </p>
-      <p>
-        <input type='submit' value='Sign Up' />
-      </p>
-    </form>
-  </body>
-  </html>
+       <% include messages %>
+     <div id="register" direction="rtl">
+      <form action='/register' method='post'>
+        <p>
+        <div class="username" >
+          <input  type='text' name='user[name]' placeholder='שם משתמש' />
+        </div>
+        </p>
+        <p>
+        <div class="password">
+          <input  type='password' name='user[pass]' placeholder='סיסמא' />
+        </div>
+        <p>
+        </p>
+        <div class="openaccount">
+          <input type='submit' value='פתח חשבון' />
+        </div>
+        </p>
+      </form>
+    </div>
+  </div>
+    </body>
+    </html>
