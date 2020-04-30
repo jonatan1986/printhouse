@@ -1,6 +1,7 @@
 var User = require('../lib/user');
 
 exports.form = function(req, res){
+  req.user = res.locals.user = "";
   res.render('register', { title: 'פתיחת חשבון'});
 };
 

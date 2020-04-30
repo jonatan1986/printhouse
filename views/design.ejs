@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+  <% if (locals.user) { %>
+    <% include topmenu %>
+    <% include menu %>
+    <div id="designpagetitle">
+      <h1><%= title %></h1>
+  <% } else { %>
+      <script>
+        // res.redirect('/login');
+        console.log("html file");
+        window.location.href = "/login";
+      </script>
+  <% } %>
+    </div>
+  </body>
+  </html>

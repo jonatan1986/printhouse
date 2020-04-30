@@ -23,7 +23,6 @@
     <div id="openaccount">
       <h1><%= title %></h1>
   </div>
-    <div class="content">
       <div class="regitserTitle">
        <p> .נא מלא את הפרטים על מנת לפתוח חשבון</p>
      </div>
@@ -31,23 +30,10 @@
        <% include messages %>
      <div id="register" direction="rtl">
       <form action='/register' method='post'>
-        <p>
-        <div class="username" >
-          <input  type='text' name='user[name]' placeholder='שם משתמש' />
-        </div>
-        </p>
-        <p>
-        <div class="password">
-          <input  type='password' name='user[pass]' placeholder='סיסמא' />
-        </div>
-        <p>
-        </p>
-        <div class="openaccount">
-          <input type='submit' value='פתח חשבון' />
-        </div>
-        </p>
+        <p> <input  class="username" type='text' name='user[name]' placeholder='שם משתמש' /> </p>
+        <p> <input class="password" type='password' name='user[pass]' placeholder='סיסמא' /></p>
+        <p> <input class="openaccount" type='submit' value='פתח חשבון' /> </p>
       </form>
     </div>
-  </div>
     </body>
     </html>

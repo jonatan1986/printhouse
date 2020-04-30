@@ -1,16 +1,11 @@
 <% if (locals.user) { %>
   <div id='menu'>
     <span class='name'><%= user.name %></span>
-    <a href='/post'>post</a>
-    <a href='/logout'>logout</a>
+    <a class='logout' href='/logout'>התנתק מהמערכת</a>
   </div>
 <% } else { %>
   <div id='menu'>
-    <div class ="login">
-      <a href='/login'>התחבר</a>
-    </div>
-  <div class ="register">
-      <a href='/register'>פתח חשבון</a>
-    </div>
+      <a class ="login" href='/login'>התחבר</a>
+      <a class ="register" href='/register'>פתח חשבון</a>
  </div>
 <% } %>

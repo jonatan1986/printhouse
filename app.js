@@ -15,6 +15,7 @@ var routes = require('./routes/index');
 var router = express.Router();
 var app = express();
 var messages = require('./lib/messages');
+var user = require('./lib/middleware/user');
 
 
 
@@ -44,10 +45,9 @@ app.use(express.static(path.join(__dirname, '/public')));
 //=============GET Variants================
 // var homepage = require('./routes/homepage');
 // app.get('/homepage',homepage.form);
+app.use(user);
 app.use(messages);
 app.use('/', routes);
-var register = require('./routes/register');
-app.post('/register',register.submit);
 //==========================================
 
 router.use(function (req, res, next){

@@ -4,38 +4,67 @@
 {
   position: fixed;
   top:160px;
-  right:630px;
+  right:500px;
   font:bold 17px/30px "times New Roman";
 }
 
 #register .username{
   position: fixed;
   top:240px;
-  right:630px;
+  right:500px;
 }
 #register .password{
   position: fixed;
   top:280px;
-  right:630px;
+  right:500px;
 }
 
 #register .openaccount{
   position: fixed;
   top:320px;
-  right:630px;
+  right:500px;
 }
 
-#menu .login{ /*התחבר */
+#login .username{
+    position: fixed;
+    top:240px;
+    right:500px;
+}
+#login .password{
+  position: fixed;
+  top:280px;
+  right:500px;
+}
+
+#login .login{
+  position: fixed;
+  top:320px;
+  right:500px;
+}
+
+
+#menu .login{ /*הכנס שם משתמש */
   position: fixed;
   top:120px;
   left:242px;
   font:bold 20px/30px "times New Roman";
 }
 
-#menu .register{  /*פתח חשבון */
+#menu .register{  /*הכנס סיסמא */
   position: fixed;
   top:80px;
   left:208px;
+  font:bold 20px/30px "times New Roman";
+}
+
+#menu .name{
+  font:bold 20px/30px "times New Roman";
+}
+
+#menu .logout{  /*צא מהמערכת */
+  position: fixed;
+  top:20px;
+  left:20px;
   font:bold 20px/30px "times New Roman";
 }
 
@@ -43,7 +72,15 @@
 #openaccount h1{
   position: fixed;
   top:80px;
-  right:630px;
+  right:500px;
+  color: #106ba8;
+  font:bold 60px "times New Roman";
+}
+
+#designpagetitle h1{
+  position: fixed;
+  top:80px;
+  right:500px;
   color: #106ba8;
   font:bold 60px "times New Roman";
 }
@@ -52,7 +89,7 @@
   position: fixed;
   font:  bold 20px/30px "times New Roman";
   top:200px;
-  right:630px;
+  right:500px;
 }
 
 *{
