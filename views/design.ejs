@@ -2,18 +2,43 @@
 <html>
   <head>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <style>
+      .p{
+        position: absolute;
+        right:230px;
+        top: 175px;
+        font:bold 20px "times New Roman";
+      }
+      .photo img{
+        position: relative;
+        top:150px;
+        right:200px;
+        padding:100px 0px 0px 800px;
+        max-height: 800px;
+        max-width: 800px;
+        object-fit: cover;
+      }
+    </style>
   </head>
   <body>
-  <% if (locals.user) { %>
-    <% include topmenu %>
-    <% include menu %>
-    <div id="designpagetitle">
-      <h1><%= title %></h1>
-  <% } else { %>
+    <% if (!locals.user) { %>
       <script>
         window.location.href = "/login";
       </script>
-  <% } %>
-    </div>
+    <% } %>
+      <% include topmenu %>
+      <% include menu %>
+      <div id="designpagetitle">
+        <h2><%= title %></h2>
+      </div>
+      <p class="p" dir="rtl">אנא בחר את הגלויה המועדפת:</p>
+      <div id="postcards">
+          <% Photos.forEach(function(photo){%>
+              <div class="photo">
+                <!-- <h2><%=photo.name%></h2> -->
+                <img src = '/postcards/<%=photo.path%>' style="float:right"/>
+              </div>
+            <%}) %>
+      </div>
   </body>
   </html>

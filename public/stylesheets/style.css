@@ -1,7 +1,13 @@
 
 /* נא מלא את הפרטים על מנת לפתוח חשבון */
-.regitserTitle
-{
+.regitserTitle{
+  position: fixed;
+  top:160px;
+  right:500px;
+  font:bold 17px/30px "times New Roman";
+}
+
+.loginTitle{
   position: fixed;
   top:160px;
   right:500px;
@@ -62,7 +68,7 @@
 }
 
 #menu .logout{  /*צא מהמערכת */
-  position: fixed;
+  position: absolute;
   top:20px;
   left:20px;
   font:bold 20px/30px "times New Roman";
@@ -77,10 +83,10 @@
   font:bold 60px "times New Roman";
 }
 
-#designpagetitle h1{
-  position: fixed;
-  top:80px;
-  right:500px;
+#designpagetitle h2{
+  position: absolute;
+  padding:30px;
+  right:200px;
   color: #106ba8;
   font:bold 60px "times New Roman";
 }
