@@ -15,6 +15,13 @@ photoArray.push({
   path:'postcard_offwhite.jpg'
 });
 
+
+photoArray.push({
+  name:'offwhite',
+  path:'postcard_bej.jpg'
+});
+
+
 exports.form = function(req, res){
   console.log(req.session.uid);
   res.render('design', { title: 'ברוך הבא',Photos:photoArray});
