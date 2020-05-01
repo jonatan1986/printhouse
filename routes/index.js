@@ -5,6 +5,11 @@ var contact = require('../routes/contact');
 var register = require('../routes/register');
 var login = require('../routes/login');
 var design = require('../routes/design');
+var app = express();
+
+
+var dir = __dirname.substring(0, __dirname.lastIndexOf('/')) + '/public/photos';
+
 
 router.get('/homepage',homepage.form);
 
@@ -18,6 +23,7 @@ router.post('/login',login.submit);
 
 
 router.get('/design',design.form);
+router.post('/design', design.submit(dir));
 router.get('/logout',design.logout);
 
 module.exports = router;
