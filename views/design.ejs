@@ -28,6 +28,12 @@
         top: 510px;
         font:bold 20px "times New Roman";
       }
+      .p5{
+        position: absolute;
+        right:230px;
+        top: 545px;
+        font:bold 20px "times New Roman";
+        }
       .photo img{
         position: relative;
         /* top:145px;
@@ -99,6 +105,7 @@
           <p class="p2" dir="rtl">ניתן גם לבחור קובץ:</p>
           <p class="p3" ><input type='file', name='photo[image]'  onclick="func2()" value='בחר קובץ'/></p>
           <p class="p4" ><input type='submit', value='העלה קובץ' onclick="func2()"/></p>
+          <p class="p5" ><% include messages %><p>
       </div>
       <script>
             function func()

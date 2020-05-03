@@ -2,9 +2,15 @@ var formidable = require('formidable'),
     http = require('http'),
     util = require('util'),
     path = require('path'),
-    fs = require('fs');
+    fs = require('fs'),
+    join = path.join;
 
+var Photo = require('../models/Photo');
+var validate = require('../lib/middleware/validate');
+var fieldname = "";
+var fieldvalue = "";
 var photoArray = [];
+var fieldvalue;
 
 photoArray.push({
   name:'birds',
@@ -29,61 +35,67 @@ photoArray.push({
 
 
 exports.form = function(req, res){
-  console.log(req.session.uid);
   res.render('design', { title: 'ברוך הבא',Photos:photoArray});
 };
 
 exports.submit = function (dir) {
 
   return function(req, res, next){
-//
-//     var form = new formidable.IncomingForm();
-//
+
+    var form = new formidable.IncomingForm();
+
 //    // form.parse analyzes the incoming stream data, picking apart the different fields and files for you.
 //
-// form.on('file', (filename, file,fieldName) => {
+form.on('file', (name, file) => {
+
+    // console.log("name " +file.name);
+    // console.log("file ",file.type);
+    // console.log("file.image",file.image);
+    let pageValidationError = validate.validateFile(req,res,next,file.size,file.name);
+    if (pageValidationError)
+    {
+      return;
+    }
+    var name = fieldvalue;
+    var path = join(dir, file.name);
+  //====================
+    fs.rename(file.path, path, function(err){
+      if (err) return next(err);
+      Photo.create({
+        name: name,
+        path: file.name,
+        username: res.locals.user.name
+      }, function(err) {
+        if (err)
+        {
+          return next(err);
+        }
+        res.redirect('back');
+      });
+    });
+    //====================
+});
 //
-//     // console.log("fieldName " +fieldname);
-//     var name = fieldvalue;
-//     var path = join(dir, file.name);
-//   //====================
-//     fs.rename(file.path, path, function(err){
-//       if (err) return next(err);
-//       Photo.create({
-//         name: name,
-//         path: file.name
-//       }, function(err) {
-//         if (err)
-//         {
-//           return next(err);
-//         }
-//         console.log("redirect name "+ name+ + " path "+ path);
-//         res.redirect('/');
-//       });
-//     });
-//     //====================
-// });
-//
-// form.on('field', (fieldName, fieldValue) => {
-//   fieldname = fieldName;
-//   fieldvalue  = fieldValue;
-// });
+form.on('field', (fieldName, fieldValue) => {
+  console.log("fieldValue",fieldValue);
+  fieldname = fieldName;
+  fieldvalue  = fieldValue;
+});
 //
 //
-//    form.parse(req, function(err, fields, files) {
-//
-//      if (err) {
-//        // Check for and handle any errors here.
-//        console.error(err.message);
-//        return;
-//      }
-//      // res.writeHead(200, {'content-type': 'text/plain'});
-//      // res.write('received upload:\n\n');
-//      //
-//      // // This last line responds to the form submission with a list of the parsed data and files.
-//      // res.end(util.inspect({fields: fields, files: files}));
-//
-//    });
+   form.parse(req, function(err, fields, files) {
+     if (err) {
+       // Check for and handle any errors here.
+       console.error(err.message);
+       return;
+     }
+     // res.writeHead(200, {'content-type': 'text/plain'});
+     // res.write('received upload:\n\n');
+     //
+     // // This last line responds to the form submission with a list of the parsed data and files.
+     // res.end(util.inspect({fields: fields, files: files}));
+
+   });
   };
 };
 

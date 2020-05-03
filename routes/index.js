@@ -23,7 +23,7 @@ router.post('/login',login.submit);
 
 
 router.get('/design',design.form);
-router.post('/design', design.submit(dir));
+router.post('/design',design.submit(dir));
 router.get('/logout',design.logout);
 
 module.exports = router;
