@@ -70,10 +70,6 @@ form.on('file', (name, file) => {
         {
           return next(err);
         }
-        var str1 = "הועלה בהצלחה ";
-        var str2 = str1.concat(file.name);
-        var str3 = str2.concat(" קובץ");
-        res.error(str3);
         res.redirect('back');
       });
     });
@@ -81,8 +77,8 @@ form.on('file', (name, file) => {
 });
 //
 form.on('field', (fieldName, fieldValue) => {
-    fieldname = fieldName;
-    fieldvalue  = fieldValue;
+  fieldname = fieldName;
+  fieldvalue  = fieldValue;
 });
 //
 //
@@ -109,12 +105,4 @@ exports.logout = function(req, res){
     if (err) throw err;
     res.redirect('/login');
   });
-};
-
-
-exports.save = function (dir) {
-  console.log("design save");
-  return function(req, res, next){
-        console.log("design save again",req.body);
-  };
 };

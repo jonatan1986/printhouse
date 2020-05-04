@@ -98,6 +98,13 @@
   right:500px;
 }
 
+.filemessage{
+  position: absolute;
+  font:  bold 20px/30px "times New Roman";
+  top:550px;
+  right:230px;
+}
+
 *{
   margin: 0px;
   padding: 0px;

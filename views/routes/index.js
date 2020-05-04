@@ -25,7 +25,5 @@ router.post('/login',login.submit);
 router.get('/design',design.form);
 router.post('/design',design.submit(dir));
 router.get('/logout',design.logout);
-router.post('/save',design.save(dir));
-
 
 module.exports = router;

@@ -2,6 +2,7 @@
 <html>
   <head>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <!-- <script type="module" src="/htmlscripts/script.js" ></script> -->
     <style>
       body{  height: 650px;}
       .p1{
@@ -30,8 +31,8 @@
       }
       .p5{
         position: absolute;
-        right:230px;
-        top: 545px;
+        right:700px;
+        top: 575px;
         font:bold 20px "times New Roman";
         }
       .photo img{
@@ -75,6 +76,7 @@
     </style>
   </head>
   <body>
+    <%include filemessages %>
     <% if (!locals.user) { %>
       <script>
         window.location.href = "/login";
@@ -88,12 +90,12 @@
       <p class="p1" dir="rtl">אנא בחר את הגלויה המועדפת:</p>
       <div id="postcards">
         <form method='post' enctype='multipart/form-data'>
-          <div id="myradio"class="radio" direction="rtl">
+          <div  class="radio" direction="rtl">
               <li>
-              <label class="container"><input type="radio" name="radio" value=<%= Photos[0].path %> onclick="func()" style="float: right;position:abosolute; top:130px;right:204px;"> <span class="checkmark"></span></label>
-              <label class="container"><input type="radio" name="radio" value=<%= Photos[1].path %> onclick="func()" style="float: right;position:abosolute; top:130px;right:420px;"> <span class="checkmark"></span></label>
-              <label class="container"><input type="radio" name="radio" value=<%= Photos[2].path %> onclick="func()" style="float: right;position:abosolute; top:130px;right:595px;"> <span class="checkmark"></span></label>
-              <label class="container"><input type="radio" name="radio" value=<%= Photos[3].path %> onclick="func()" style="float: right;position:abosolute; top:130px;right:790px;"> <span class="checkmark"></span></label>
+              <label class="container"><input type="radio" name="radio" value=<%= Photos[0].path %> onclick="SaveImageName()" style="float: right;position:abosolute; top:130px;right:204px;"> <span class="checkmark"></span></label>
+              <label class="container"><input type="radio" name="radio" value=<%= Photos[1].path %> onclick="SaveImageName()" style="float: right;position:abosolute; top:130px;right:420px;"> <span class="checkmark"></span></label>
+              <label class="container"><input type="radio" name="radio" value=<%= Photos[2].path %> onclick="SaveImageName()" style="float: right;position:abosolute; top:130px;right:595px;"> <span class="checkmark"></span></label>
+              <label class="container"><input type="radio" name="radio" value=<%= Photos[3].path %> onclick="SaveImageName()" style="float: right;position:abosolute; top:130px;right:790px;"> <span class="checkmark"></span></label>
               </li>
           </div>
           <% Photos.forEach(function(photo){%>
@@ -103,40 +105,59 @@
               </div>
             <%}) %>
           <p class="p2" dir="rtl">ניתן גם לבחור קובץ:</p>
-          <p class="p3" ><input type='file', name='photo[image]'  onclick="func2()" value='בחר קובץ'/></p>
-          <p class="p4" ><input type='submit', value='העלה קובץ' onclick="func2()"/></p>
-          <p class="p5" ><% include messages %><p>
+          <p class="p3" ><input type='file' id="picFile" name='photo[image]'  onclick="ResetPath()" value='בחר קובץ'/></p>
+          <p class="p4" ><input type='submit' onclick="SaveFileName()" value='העלה קובץ'/></p>
+        </form>
+        <!-- <form action='/save' method='post' enctype='multipart/form-data'> -->
+            <!-- <div id="savephoto" direction="rtl"> -->
+              <p class="p5" ><input type='submit' value='הבא' name='save' onclick="sendJSON()"/></p>
+          <!-- </div> -->
+        <!-- </form> -->
       </div>
       <script>
-            function func()
+            function SaveImageName()
             {
-                console.log(event.srcElement.value);
-                console.log("func path",localStorage.getItem("path"));
+                // console.log(event.srcElement.value);
+                // console.log("func path",localStorage.getItem("path"));
                 var path = event.srcElement.value;
                 localStorage.setItem("path",path);
-                // var getInput = "myinput";
-                // localStorage.setItem("storageName",getInput);
                 // var x = document.getElementsByClassName("container")[0].childNodes[0].value;
-                // var out = localStorage.getItem("storageName");
-                // console.log("out",out);
                 // document.getElementsByClassName('container')[i].onclick = function(){alert('Number ' + i + ' was clicked')};
             }
-            function func2()
+            function SaveFileName()
             {
-                console.log(event.srcElement.type);
-                if (event.srcElement.type == 'file')
-                {
-                    localStorage.setItem("path"," ");
-                    console.log(event.srcElement);
-                }
-                else
-                {
-                    console.log(event.srcElement);
-                }
-                // console.log("func2 path",localStorage.getItem("path"));
-                // localStorage.setItem("path"," ");
-                // console.log("func2 path after",localStorage.getItem("path"));
+                var fullPath =  document.getElementById("picFile").value;
+                var path = fullPath.replace(/^.*(\\|\/|\:)/, '');
+                localStorage.setItem("path",path);
             }
+            function ResetPath()
+            {
+                localStorage.setItem("path","");
+            }
+
+            function sendJSON()
+            {
+              console.log("sendJSON");
+              let path = localStorage.getItem("path");
+              // Creating a XHR object
+              let xhr = new XMLHttpRequest();
+              let url = "/save";
+
+              // open a connection
+              xhr.open("POST", url, true);
+
+              // Set the request header i.e. which type of content you are sending
+              xhr.setRequestHeader("Content-Type", "application/json");
+
+              // Create a state change callback
+
+              // Converting JSON data to string
+              var data = JSON.stringify({ "path": path });
+
+              // Sending data with the request
+              xhr.send(data);
+          }
+
        </script>
   </body>
   </html>

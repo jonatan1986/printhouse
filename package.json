@@ -23,7 +23,8 @@
     "mongodb": "^3.5.7",
     "mongoose": "^5.9.11",
     "morgan": "~1.9.1",
-    "redis": "^3.0.2"
+    "redis": "^3.0.2",
+    "requirejs": "^2.3.6"
   },
   "main": "app.js",
   "directories": {
