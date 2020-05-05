@@ -1,7 +1,6 @@
 var User = require('../lib/user');
 
 exports.form = function(req, res){
-  req.user = res.locals.user = "";
   res.render('login', { title: 'התחברות'});
 };
 

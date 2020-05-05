@@ -5,10 +5,11 @@ var contact = require('../routes/contact');
 var register = require('../routes/register');
 var login = require('../routes/login');
 var design = require('../routes/design');
+var fill = require('../routes/fill');
 var app = express();
 
 
-var dir = __dirname.substring(0, __dirname.lastIndexOf('/')) + '/public/photos';
+var dir = __dirname.substring(0, __dirname.lastIndexOf('/')) + '/public/postcards';
 
 
 router.get('/homepage',homepage.form);
@@ -26,6 +27,10 @@ router.get('/design',design.form);
 router.post('/design',design.submit(dir));
 router.get('/logout',design.logout);
 router.post('/save',design.save(dir));
+
+// router.get('/save',design.save(dir));
+
+router.get('/fill',fill.form);
 
 
 module.exports = router;

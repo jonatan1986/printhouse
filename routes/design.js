@@ -44,8 +44,7 @@ exports.submit = function (dir) {
 
     var form = new formidable.IncomingForm();
 
-//    // form.parse analyzes the incoming stream data, picking apart the different fields and files for you.
-//
+// form.parse analyzes the incoming stream data, picking apart the different fields and files for you.
 form.on('file', (name, file) => {
 
     // console.log("name " +file.name);
@@ -61,29 +60,30 @@ form.on('file', (name, file) => {
   //====================
     fs.rename(file.path, path, function(err){
       if (err) return next(err);
-      Photo.create({
-        name: name,
-        path: file.name,
-        username: res.locals.user.name
-      }, function(err) {
-        if (err)
-        {
-          return next(err);
-        }
+      // Photo.create({
+      //   name: name,
+      //   path: file.name,
+      //   username: res.locals.user.name
+      // },
+      // function(err) {
+        // if (err)
+        // {
+        //   return next(err);
+        // }
         var str1 = "הועלה בהצלחה ";
         var str2 = str1.concat(file.name);
         var str3 = str2.concat(" קובץ");
-        res.error(str3);
+        res.success(str3);
         res.redirect('back');
-      });
+      // });
     });
     //====================
 });
 //
-form.on('field', (fieldName, fieldValue) => {
-    fieldname = fieldName;
-    fieldvalue  = fieldValue;
-});
+    form.on('field', (fieldName, fieldValue) => {
+        fieldname = fieldName;
+        fieldvalue  = fieldValue;
+    });
 //
 //
    form.parse(req, function(err, fields, files) {
@@ -113,8 +113,21 @@ exports.logout = function(req, res){
 
 
 exports.save = function (dir) {
-  console.log("design save");
   return function(req, res, next){
-        console.log("design save again",req.body);
+        // console.log("design save again",req.body);
+        var data = req.body;
+        console.log("save filename",data);
+        res.locals.file = data.filename;
+        // if(data.selected == "true")
+        // {
+        //    console.log("save filename /fill",data);
+        //    res.redirect('/fill');
+        // }
+        // else
+        // {
+        //   console.log("save filename /design",data);
+        //    res.error("אנא בחר תמונה או העלה קובץ");
+        //    res.redirect('/design');
+        // }
   };
 };

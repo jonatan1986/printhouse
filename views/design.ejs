@@ -29,7 +29,7 @@
         top: 510px;
         font:bold 20px "times New Roman";
       }
-      .p5{
+       .p5{
         position: absolute;
         right:700px;
         top: 575px;
@@ -75,13 +75,30 @@
 
     </style>
   </head>
-  <body>
-    <%include filemessages %>
+  <body onload="initOnLoad()">
+    <div>
+      <p id="savephoto" direction="rtl" class="p5" ><input type='submit' value='הבא' name='save'  disabled='true' onclick="window.location.href='/fill'" /></p>
+    </div>
     <% if (!locals.user) { %>
       <script>
         window.location.href = "/login";
       </script>
     <% } %>
+    <% if (locals.messages) { %>
+        <% messages.forEach(function(message) { %>
+          <script>
+              let type = '<%= message.type %>';
+              console.log("type",type);
+              if (type == 'success')
+              {
+                var btn  = document.getElementById("savephoto").childNodes[0];
+                btn.disabled = false;
+                  // enablebutton();
+              }
+         </script>
+         <% }) %>
+    <% } %>
+      <%include filemessages %>
       <% include topmenu %>
       <% include menu %>
       <div id="designpagetitle">
@@ -108,55 +125,59 @@
           <p class="p3" ><input type='file' id="picFile" name='photo[image]'  onclick="ResetPath()" value='בחר קובץ'/></p>
           <p class="p4" ><input type='submit' onclick="SaveFileName()" value='העלה קובץ'/></p>
         </form>
-        <!-- <form action='/save' method='post' enctype='multipart/form-data'> -->
-            <!-- <div id="savephoto" direction="rtl"> -->
-              <p class="p5" ><input type='submit' value='הבא' name='save' onclick="sendJSON()"/></p>
-          <!-- </div> -->
-        <!-- </form> -->
+        <!-- <div>
+          <p id="savephoto" direction="rtl" class="p5" ><input type='submit' value='הבא' name='save'  disabled='true' onclick="window.location.href='/fill'" /></p>
+        </div> -->
       </div>
       <script>
+            function initOnLoad()
+            {
+              localStorage.removeItem("filename");
+            }
             function SaveImageName()
             {
                 // console.log(event.srcElement.value);
                 // console.log("func path",localStorage.getItem("path"));
-                var path = event.srcElement.value;
-                localStorage.setItem("path",path);
+                console.log("event.srcElement.value",event.srcElement.value);
+                var filename = event.srcElement.value;
+                localStorage.setItem("filename",filename);
+                localStorage.setItem("bFileUploaded","false");
+                var btn  = document.getElementById("savephoto").childNodes[0];
+                btn.disabled = false;
                 // var x = document.getElementsByClassName("container")[0].childNodes[0].value;
                 // document.getElementsByClassName('container')[i].onclick = function(){alert('Number ' + i + ' was clicked')};
             }
             function SaveFileName()
             {
                 var fullPath =  document.getElementById("picFile").value;
-                var path = fullPath.replace(/^.*(\\|\/|\:)/, '');
-                localStorage.setItem("path",path);
+                var filename = fullPath.replace(/^.*(\\|\/|\:)/, '');
+                localStorage.setItem("filename",filename);
+                localStorage.setItem("bFileUploaded","true");
+                var btn  = document.getElementById("savephoto").childNodes[0];
+                btn.disabled = false;
             }
             function ResetPath()
             {
-                localStorage.setItem("path","");
+                localStorage.setItem("filename","");
             }
-
-            function sendJSON()
-            {
-              console.log("sendJSON");
-              let path = localStorage.getItem("path");
-              // Creating a XHR object
-              let xhr = new XMLHttpRequest();
-              let url = "/save";
-
-              // open a connection
-              xhr.open("POST", url, true);
-
-              // Set the request header i.e. which type of content you are sending
-              xhr.setRequestHeader("Content-Type", "application/json");
-
-              // Create a state change callback
-
-              // Converting JSON data to string
-              var data = JSON.stringify({ "path": path });
-
-              // Sending data with the request
-              xhr.send(data);
-          }
+          //   function sendJSON()
+          //   {
+          //     let filename = localStorage.getItem("filename");
+          //     console.log("sendJSON ", filename);
+          //     // Creating a XHR object
+          //     let xhr = new XMLHttpRequest();
+          //     let url = "/save";
+          //     // open a connection
+          //     xhr.open("POST", url, true);
+          //     // Set the request header i.e. which type of content you are sending
+          //     xhr.setRequestHeader("Content-Type", "application/json");
+          //     // Converting JSON data to string
+          //     var data = JSON.stringify({ "filename": filename});
+          //
+          //     // Sending data with the request
+          //     xhr.send(data);
+          //     // window.location.href = "/fill";
+          // }
 
        </script>
   </body>
