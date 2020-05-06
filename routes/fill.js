@@ -2,5 +2,5 @@
 
 
 exports.form = function(req, res){
-  res.render('fill', { title: 'בחירת גופן:'});
+  res.render('fill', { title: ''});
 };

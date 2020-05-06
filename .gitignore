@@ -9,9 +9,7 @@ diagnostic.data/metrics.2020-05-03T05-09-53Z-00000
 diagnostic.data/metrics.2020-05-03T05-10-34Z-00000
 diagnostic.data/metrics.2020-05-03T12-17-58Z-00000
 diagnostic.data/metrics.interim
-index-1-6100397778034231595.wt
-index-3-6100397778034231595.wt
-index-3-6621999804530608644.wt
-index-4-6100397778034231595.wt
 journal/WiredTigerLog.0000000003
 sizeStorer.wt
+index*
+public/postcards/nodejs-green.png

@@ -6,9 +6,28 @@
     </div>
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <style>
+    .photo h3{
+      position: relative;
+      right:240px;
+      font:bold 20px "times New Roman";
+    }
+    h4{
+      position: relative;
+      right:240px;
+      top:240px;
+      font:bold 20px "times New Roman";
+    }
+    .photo img{
+      position: fixed;
+      top:130px;
+      right:300px;
+      max-height: 200px;
+      max-width: 200px;
+      object-fit: cover;
+    }
     </style>
   </head>
-  <body>
+  <body onload="initOnLoad()">
     <% if (!locals.user) { %>
       <script>
         window.location.href = "/login";
@@ -16,5 +35,21 @@
     <% } %>
     <% include topmenu %>
     <% include menu %>
+    <div class="photo">
+      <h3 dir="rtl" >זו התמונה שבחרת:</h3>
+      <img id ="photo" src ='' />
+    </div>
+    <div>
+        <h4 dir="rtl" >אנא בחר גופן: </h4>
+    </div>
+    <script>
+    function initOnLoad()
+    {
+      var filename = localStorage.getItem('filename');
+      var path = '/postcards/';
+      var totalpath = path.concat(filename);
+      document.getElementById('photo').src = totalpath;
+    }
+    </script>
   </body>
   </html>
