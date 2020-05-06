@@ -6,7 +6,7 @@
     </div>
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <style>
-    body{  height: 650px;}
+    body{  height: 1000px;}
     .photo h3{
       position: relative;
       right:240px;
@@ -52,6 +52,20 @@
       right:295px;
       top:730px;
     }
+    #result{
+      position: absolute;
+      right:295px;
+      top:770px;
+    }
+    .result img{
+      position: absolute;
+      right:295px;
+      top:800px;
+      max-height: 600px;
+      max-width: 600px;
+      object-fit: cover;
+    }
+
     </style>
   </head>
   <body onload="initOnLoad()">
@@ -87,6 +101,11 @@
         <p id="errorDisplay"></p>
         <p><input type='submit' class="showresult" onclick="displayResult()" value='הצג תוצאה'/></p>
     </div>
+    <div class="result">
+      <img id ="resultPhoto" src ='' />
+      <!-- <p class="resultTitle"></p>
+      <p class="resultText"></p> -->
+    </div>
 
     <script>
     function initOnLoad()
@@ -95,7 +114,7 @@
       var path = '/postcards/';
       var totalpath = path.concat(filename);
       document.getElementById('photo').src = totalpath;
-
+      localStorage.setItem("totalpath",totalpath);
       var x = document.getElementById("font").value;
       console.log("select font ",x);
     }
@@ -125,6 +144,9 @@
         else
         {
           document.getElementById("errorDisplay").innerHTML ="";
+          var totalpath = localStorage.getItem("totalpath");
+          console.log("totalpath",totalpath);
+          document.getElementById('resultPhoto').src = totalpath;
         }
     }
     </script>
