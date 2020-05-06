@@ -6,24 +6,51 @@
     </div>
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <style>
+    body{  height: 650px;}
     .photo h3{
       position: relative;
       right:240px;
-      font:bold 20px "times New Roman";
+      font:bold 20px "macabi";
     }
     h4{
       position: relative;
       right:240px;
       top:240px;
-      font:bold 20px "times New Roman";
+      font:bold 20px "macabi";
     }
     .photo img{
-      position: fixed;
+      position: absolute;
       top:130px;
       right:300px;
       max-height: 200px;
       max-width: 200px;
       object-fit: cover;
+    }
+    #font{
+      position: absolute;
+      right:295px;
+      top:390px;
+    }
+    #title{
+      position: absolute;
+      right:295px;
+      top:430px;
+    }
+
+    #content{
+      position: absolute;
+      right:295px;
+      top:480px;
+    }
+    .showresult{
+      position: absolute;
+      right:295px;
+      top:700px;
+    }
+    #errorDisplay{
+      position: absolute;
+      right:295px;
+      top:730px;
     }
     </style>
   </head>
@@ -40,8 +67,27 @@
       <img id ="photo" src ='' />
     </div>
     <div>
+      <!-- <label for="cars">אנא בחר גופן:</label> -->
         <h4 dir="rtl" >אנא בחר גופן: </h4>
+        <select dir="rtl" id="font" onchange="selectfont()">
+          <option value="macabi" >macabi</option>
+          <option value="anka" >anka </option>
+          <option value="carmelit">carmelit</option>
+          <option value="gan" >gan</option>
+          <option value="open-sans" >open-sans</option>
+          <option value="trashim">trashim</option>
+        </select>
+        <form method='post' enctype='multipart/form-data'>
+          <p id="title" dir="rtl" ><input type='text' name='title[name]' oninput="SetTitle(this.value)" placeholder='כותרת'/></p>
+          <textarea  id="content" dir="rtl"  rows="10" cols="50" name='content[name]' oninput="SetContent(this.value)" placeholder='תוכן'></textarea>
+          <!-- <p><input type='submit' class="showresult"  value='שמור שינויים'/></p> -->
+          <!-- <p><input type='file', name='photo[image]'/></p>
+          <p><input type='submit', value='Upload'/></p> -->
+        </form>
+        <p id="errorDisplay"></p>
+        <p><input type='submit' class="showresult" onclick="displayResult()" value='הצג תוצאה'/></p>
     </div>
+
     <script>
     function initOnLoad()
     {
@@ -49,6 +95,37 @@
       var path = '/postcards/';
       var totalpath = path.concat(filename);
       document.getElementById('photo').src = totalpath;
+
+      var x = document.getElementById("font").value;
+      console.log("select font ",x);
+    }
+
+    function selectfont()
+    {
+       var x = document.getElementById("font").value;
+       console.log("select font ",x);
+    }
+
+    function SetTitle(title)
+    {
+      localStorage.setItem("title",title);
+    }
+
+    function SetContent(content)
+    {
+      localStorage.setItem("content",content);
+    }
+
+    function displayResult()
+    {
+        if (localStorage.getItem("title").length == 0 || localStorage.getItem("content").length == 0)
+        {
+          document.getElementById("errorDisplay").innerHTML = "לא מילאת את כל השדות הרלוונטיים";
+        }
+        else
+        {
+          document.getElementById("errorDisplay").innerHTML ="";
+        }
     }
     </script>
   </body>

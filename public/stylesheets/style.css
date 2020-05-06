@@ -1,4 +1,24 @@
 
+
+@font-face {
+  font-family: macabi;
+  src: url(fonts/makabiyg-webfont.woff);
+}@font-face {
+  font-family: anka;
+  src: url(fonts/ankaclm-bold-webfont.woff);
+}@font-face {
+  font-family: carmelit;
+  src: url(fonts/carmelitregular.woff);
+}@font-face {
+  font-family: gan;
+  src: url(fonts/ganclm_bold-webfont.woff);
+}@font-face {
+  font-family: open-sans;
+  src: url(opensanshebrew-bold-webfont.woff);
+}@font-face {
+  font-family: trashim;
+  src: url(fonts/trashimclm-bold-webfont.woff);
+}
 /* נא מלא את הפרטים על מנת לפתוח חשבון */
 .regitserTitle{
   position: fixed;
