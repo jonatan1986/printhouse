@@ -74,6 +74,12 @@
       top:880px;
       object-fit: cover;
     }
+    .resultContent {
+      position: absolute;
+      right:400px;
+      top:930px;
+      object-fit: cover;
+    }
 
     </style>
   </head>
@@ -112,9 +118,8 @@
     </div>
     <div class="result">
       <img class="result" src ='' />
-      <!--  style="font:50px macabi"  -->
       <p class="resultTitle" style="" ></p>
-      <p class="result"  content='' ></p>
+      <p class="resultContent" style=""  ></p>
     </div>
 
     <script>
@@ -154,22 +159,33 @@
           document.getElementById("errorDisplay").innerHTML ="";
           var totalpath = localStorage.getItem("totalpath");
           document.getElementsByClassName('result')[1].src = totalpath;
-          // document.getElementsByClassName('result')[2].style = totalpath;
           document.getElementsByClassName('resultTitle')[0].innerHTML = localStorage.getItem("title");
-          // console.log( document.getElementsByClassName('result')[2].style);
+          document.getElementsByClassName('resultContent')[0].innerHTML = localStorage.getItem("content");
         }
     }
     function SetFont()
     {
+        SetTitleFont();
+        SetContentFont();
+    }
+    function SetTitleFont()
+    {
+       var style = "";
+       style = style.concat(" 40px ");
+       var font =  document.getElementById("font").value;
+       style = style.concat(font);
+       console.log(style);
+       document.getElementsByClassName('resultTitle')[0].style.font = style;
+       console.log(document.getElementsByClassName('resultTitle')[0].style.font);
+    }
+    function SetContentFont()
+    {
       var style = "";
-      style = style.concat(" 40px ");
+      style = style.concat(" 20px ");
       var font =  document.getElementById("font").value;
       style = style.concat(font);
-      console.log(style);
-      document.getElementsByClassName('resultTitle')[0].style.font = style;
-      // document.getElementsByClassName('resultTitle')[0].style.font = "20px macabi";
-      // "bold 20px macabi";
-      console.log(document.getElementsByClassName('resultTitle')[0].style.font);
+      document.getElementsByClassName('resultContent')[0].style.font = style;
+      console.log(document.getElementsByClassName('resultContent')[0].style.font);
     }
     </script>
   </body>
