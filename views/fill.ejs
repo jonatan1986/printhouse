@@ -6,7 +6,7 @@
     </div>
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <style>
-    body{  height: 1000px;}
+    body{  height: 1400px;}
     .photo h3{
       position: relative;
       right:240px;
@@ -52,11 +52,11 @@
       right:295px;
       top:730px;
     }
-    #result{
+    /* #result{
       position: absolute;
       right:295px;
       top:770px;
-    }
+    } */
     .result img{
       position: absolute;
       right:295px;
@@ -92,7 +92,7 @@
           <option value="trashim">trashim</option>
         </select>
         <form method='post' enctype='multipart/form-data'>
-          <p id="title" dir="rtl" ><input type='text' name='title[name]' oninput="SetTitle(this.value)" placeholder='כותרת'/></p>
+          <p dir="rtl" ><input  id="title" type='text' name='title[name]' oninput="SetTitle(this.value)" placeholder='כותרת'/></p>
           <textarea  id="content" dir="rtl"  rows="10" cols="50" name='content[name]' oninput="SetContent(this.value)" placeholder='תוכן'></textarea>
           <!-- <p><input type='submit' class="showresult"  value='שמור שינויים'/></p> -->
           <!-- <p><input type='file', name='photo[image]'/></p>
@@ -116,7 +116,10 @@
       document.getElementById('photo').src = totalpath;
       localStorage.setItem("totalpath",totalpath);
       var x = document.getElementById("font").value;
-      console.log("select font ",x);
+      document.getElementById("title").value = "";
+      document.getElementById("content").value = "";
+      localStorage.setItem("title","");
+      localStorage.setItem("content","");
     }
 
     function selectfont()
@@ -145,7 +148,6 @@
         {
           document.getElementById("errorDisplay").innerHTML ="";
           var totalpath = localStorage.getItem("totalpath");
-          console.log("totalpath",totalpath);
           document.getElementById('resultPhoto').src = totalpath;
         }
     }
