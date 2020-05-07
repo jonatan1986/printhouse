@@ -60,9 +60,18 @@
     .result img{
       position: absolute;
       right:295px;
+      /* top:700px;
+      max-height: 10px;
+      max-width: 10px; */
       top:800px;
       max-height: 600px;
       max-width: 600px;
+      object-fit: cover;
+    }
+    .resultTitle {
+      position: absolute;
+      right:500px;
+      top:880px;
       object-fit: cover;
     }
 
@@ -83,7 +92,7 @@
     <div>
       <!-- <label for="cars">אנא בחר גופן:</label> -->
         <h4 dir="rtl" >אנא בחר גופן: </h4>
-        <select dir="rtl" id="font" onchange="selectfont()">
+        <select dir="rtl" id="font" onchange="SetFont()" >
           <option value="macabi" >macabi</option>
           <option value="anka" >anka </option>
           <option value="carmelit">carmelit</option>
@@ -102,9 +111,10 @@
         <p><input type='submit' class="showresult" onclick="displayResult()" value='הצג תוצאה'/></p>
     </div>
     <div class="result">
-      <img id ="resultPhoto" src ='' />
-      <!-- <p class="resultTitle"></p>
-      <p class="resultText"></p> -->
+      <img class="result" src ='' />
+      <!--  style="font:50px macabi"  -->
+      <p class="resultTitle" style="" ></p>
+      <p class="result"  content='' ></p>
     </div>
 
     <script>
@@ -120,12 +130,7 @@
       document.getElementById("content").value = "";
       localStorage.setItem("title","");
       localStorage.setItem("content","");
-    }
-
-    function selectfont()
-    {
-       var x = document.getElementById("font").value;
-       console.log("select font ",x);
+      SetFont();
     }
 
     function SetTitle(title)
@@ -148,8 +153,23 @@
         {
           document.getElementById("errorDisplay").innerHTML ="";
           var totalpath = localStorage.getItem("totalpath");
-          document.getElementById('resultPhoto').src = totalpath;
+          document.getElementsByClassName('result')[1].src = totalpath;
+          // document.getElementsByClassName('result')[2].style = totalpath;
+          document.getElementsByClassName('resultTitle')[0].innerHTML = localStorage.getItem("title");
+          // console.log( document.getElementsByClassName('result')[2].style);
         }
+    }
+    function SetFont()
+    {
+      var style = "";
+      style = style.concat(" 40px ");
+      var font =  document.getElementById("font").value;
+      style = style.concat(font);
+      console.log(style);
+      document.getElementsByClassName('resultTitle')[0].style.font = style;
+      // document.getElementsByClassName('resultTitle')[0].style.font = "20px macabi";
+      // "bold 20px macabi";
+      console.log(document.getElementsByClassName('resultTitle')[0].style.font);
     }
     </script>
   </body>
