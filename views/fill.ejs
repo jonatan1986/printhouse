@@ -57,28 +57,35 @@
       right:295px;
       top:770px;
     } */
-    .result img{
-      position: absolute;
-      right:295px;
-      /* top:700px;
-      max-height: 10px;
-      max-width: 10px; */
-      top:800px;
-      max-height: 600px;
-      max-width: 600px;
-      object-fit: cover;
+    .result
+    {
+      width: 420px;
+      height: 400px;
+      position: relative;
+      top:300px;
+      margin: 20px 100px;
+    }.result img{
+      width: 800px;
+      height: 600px;
     }
-    .resultTitle {
+    .result .resultTitle {
       position: absolute;
-      right:500px;
+      top:120%;
+      left:115%;
+      transform: translate(-50%,-50%);
+      /* right:500px;
       top:880px;
-      object-fit: cover;
+      object-fit: cover; */
     }
-    .resultContent {
+    .result .resultContent {
       position: absolute;
+      top:135%;
+      left:115%;
+      transform: translate(-50%);
+      /* position: absolute;
       right:400px;
       top:930px;
-      object-fit: cover;
+      object-fit: cover; */
     }
 
     </style>
@@ -117,9 +124,10 @@
         <p><input type='submit' class="showresult" onclick="displayResult()" value='הצג תוצאה'/></p>
     </div>
     <div class="result">
-      <img class="result" src ='' />
-      <p class="resultTitle" style="" ></p>
-      <p class="resultContent" style=""  ></p>
+    <img class="result" src ='' style ="opacity:0;"/>
+      <!-- <p  class="resultTitle" style="" ></p> -->
+      <pre dir="rtl" class="resultTitle" style="" ></pre>
+      <pre dir="rtl" class="resultContent" style=""  ></pre>
     </div>
 
     <script>
@@ -159,7 +167,10 @@
           document.getElementById("errorDisplay").innerHTML ="";
           var totalpath = localStorage.getItem("totalpath");
           document.getElementsByClassName('result')[1].src = totalpath;
+          document.getElementsByClassName('result')[1].style ="opacity:1;";
           document.getElementsByClassName('resultTitle')[0].innerHTML = localStorage.getItem("title");
+
+          console.log("title",localStorage.getItem("title"));
           document.getElementsByClassName('resultContent')[0].innerHTML = localStorage.getItem("content");
         }
     }
@@ -174,9 +185,7 @@
        style = style.concat(" 40px ");
        var font =  document.getElementById("font").value;
        style = style.concat(font);
-       console.log(style);
        document.getElementsByClassName('resultTitle')[0].style.font = style;
-       console.log(document.getElementsByClassName('resultTitle')[0].style.font);
     }
     function SetContentFont()
     {
@@ -185,7 +194,6 @@
       var font =  document.getElementById("font").value;
       style = style.concat(font);
       document.getElementsByClassName('resultContent')[0].style.font = style;
-      console.log(document.getElementsByClassName('resultContent')[0].style.font);
     }
     </script>
   </body>
