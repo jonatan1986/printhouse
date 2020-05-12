@@ -13,3 +13,4 @@ journal/WiredTigerLog.0000000003
 sizeStorer.wt
 index*
 public/postcards/nodejs-green.png
+views/fill_temp.ejs
