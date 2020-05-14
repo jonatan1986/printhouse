@@ -7,7 +7,7 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
 
     <style>
-    body{  height: 1400px;}
+    body{  height: 1500px;}
     .photo h3{
       position: relative;
       right:240px;
@@ -60,6 +60,7 @@
       height: 400px;
       position: relative;
       top:300px;
+      right:30px;
       margin: 20px 100px;
     }.result img{
       width: 800px;
@@ -68,17 +69,35 @@
     .result .resultTitle {
       position: absolute;
       top:120%;
-      left:120%;
+      left:110%;
       transform: translate(-50%,-50%);
-      /* right:500px;
-      top:880px;
-      object-fit: cover; */
     }
     .result .resultContent {
       position: absolute;
       top:135%;
-      left:120%;
+      left:110%;
       transform: translate(-50%);
+    }
+    #savechanges
+    {
+      position: absolute;
+      right:295px;
+      top:740px;
+    }
+    #amount
+    {
+        position: absolute;
+        top:1450px;
+        right:295px;
+        font:20px "anka";
+    }
+
+    #amountinput
+    {
+        position: absolute;
+        top:1480px;
+        right:295px;
+        font:20px "anka";
     }
     </style>
   </head>
@@ -105,25 +124,28 @@
           <option value="open-sans" >open-sans</option>
           <option value="trashim">trashim</option>
         </select>
-        <form method='post' enctype='multipart/form-data'>
-          <p dir="rtl" ><input  id="title" type='text' name='title[name]' oninput="SetTitle(this.value)" placeholder='כותרת' maxlength="10"/></p>
-          <textarea  id="content" dir="rtl" data-limit-rows=true  wrap="hard" style="resize:none;" rows="10" cols="40"  name='content[name]' oninput="SetContent(this.value)" placeholder='תוכן' ></textarea>
-          <!-- <p><input type='submit' class="showresult"  value='שמור שינויים'/></p> -->
-          <!-- <p><input type='file', name='photo[image]'/></p>
-          <p><input type='submit', value='Upload'/></p> -->
+        <form  method='post' action='/fill' dir="rtl" >
+          <p><input id="title" type='text' name='photodata[title]' oninput="SetTitle(this.value)" placeholder='כותרת' maxlength="10"/></p>
+          <textarea id="content" data-limit-rows=true  rows="10" cols="40"  name='photodata[content]' oninput="SetContent(this.value)" placeholder='תוכן' ></textarea>
+          <p hidden><input id="path" type='text' name='photodata[path]' </p>
+          <p id="savechanges" ><input type='submit'  value='שמור שינויים'  disabled='true' onclick="SavePath()"/></p>
+          <p id="amount" hidden="true">אנא בחר את כמות ההזמנות הרצוייה:</p>
+          <p id="amountinput" hidden="true"><input type='text', name='number[amount]', placeholder='כמות'/>
         </form>
         <p id="errorDisplay"></p>
         <p><input type='submit' class="showresult" onclick="displayResult()" value='הצג תוצאה'/></p>
     </div>
     <div class="result">
     <img class="result" src ='' style ="opacity:0;"/>
-      <!-- <p  class="resultTitle" style="" ></p> -->
       <pre dir="rtl" class="resultTitle" style="" ></pre>
       <pre dir="rtl" class="resultContent" style=""  ></pre>
     </div>
 
     <script>
-
+    function SavePath()
+    {
+        document.getElementById("path").value = localStorage.getItem("totalpath");
+    }
     function initOnLoad()
     {
       var filename = localStorage.getItem('filename');
@@ -136,6 +158,8 @@
       document.getElementById("content").value = "";
       localStorage.setItem("title","");
       localStorage.setItem("content","");
+      var btn  = document.getElementById("savechanges").childNodes[0];
+      btn.disabled = true;
       SetFont();
     }
 
@@ -165,6 +189,12 @@
 
           console.log("title",localStorage.getItem("title"));
           document.getElementsByClassName('resultContent')[0].innerHTML = localStorage.getItem("content");
+
+          var btn  = document.getElementById("savechanges").childNodes[0];
+          btn.disabled = false;
+
+          document.getElementById("amount").hidden = false;
+          document.getElementById("amountinput").hidden = false;
         }
     }
     function SetFont()

@@ -60,16 +60,6 @@ form.on('file', (name, file) => {
   //====================
     fs.rename(file.path, path, function(err){
       if (err) return next(err);
-      // Photo.create({
-      //   name: name,
-      //   path: file.name,
-      //   username: res.locals.user.name
-      // },
-      // function(err) {
-        // if (err)
-        // {
-        //   return next(err);
-        // }
         var str1 = "הועלה בהצלחה ";
         var str2 = str1.concat(file.name);
         var str3 = str2.concat(" קובץ");

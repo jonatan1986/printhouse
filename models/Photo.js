@@ -6,9 +6,10 @@ mongoose.connect('mongodb://localhost/photo_app',{ useUnifiedTopology: true,
                                                   });
 
 var schema = new mongoose.Schema({
-  name: String,
-  path: String,
-  username: String
+  username: String,
+  title: String,
+  content: String,
+  filepath: String
 });
 
 
