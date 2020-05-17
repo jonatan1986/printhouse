@@ -7,7 +7,6 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
 
     <style>
-    /* body{  height: 900px;} */
     .photo h3{
       position: relative;
       right:240px;
@@ -82,8 +81,8 @@
     #savechanges
     {
       position: absolute;
-      right:295px;
-      top:740px;
+      right:700px;
+      top:1545px;
     }
     #amount
     {
@@ -98,8 +97,21 @@
         position: absolute;
         top:1480px;
         right:295px;
+        margin-top: 10px;
         font:20px "anka";
     }
+   #errorDisplay1
+   {
+     position: absolute;
+     top:1510px;
+     right:295px;
+     margin-top: 10px;
+     font:20px "anka";
+   }
+    /*
+    p id="phone" hidden="true">אנא הזן את מספר הטלפון:</p>
+    <p id="phoneinput
+    */
     </style>
   </head>
   <body onload="initOnLoad()">
@@ -129,13 +141,14 @@
           <p><input id="title" type='text' name='photodata[title]' oninput="SetTitle(this.value)" placeholder='כותרת' maxlength="10"/></p>
           <textarea id="content" data-limit-rows=true  rows="10" cols="40"  name='photodata[content]' oninput="SetContent(this.value)" placeholder='תוכן' ></textarea>
           <p hidden><input id="path" type='text' name='photodata[path]' </p>
-          <p id="savechanges" ><input type='submit'  value='שמור שינויים'  disabled='true' onclick="SavePath()"/></p>
-          <p id="amount" hidden="true">אנא בחר את כמות ההזמנות הרצוייה:</p>
-          <p id="amountinput" hidden="true"><input type='text', name='number[amount]', placeholder='כמות'/>
+          <p id="savechanges" hidden="true"><input type='submit'  value='הבא' onclick="SavePath()" disabled="true"/><br><br><br>
+            <p id="amount" hidden="true">אנא בחר את כמות ההזמנות הרצוייה:</p>
+            <p id="amountinput" hidden="true"><input type='text', name='photodata[amount]', placeholder='כמות' maxlength="4" oninput="EnableNextButton(this.value)"/><br><br><br>
+            <p id="errorDisplay1"></p>
         </form>
        </div>
         <p id="errorDisplay"></p>
-        <p><input type='submit' class="showresult" onclick="displayResult()" value='הצג תוצאה'/></p>
+        <p><input type='submit' class="showresult" onclick="displayResult()" value='הצג תוצאה'/><p>
     </div>
     <div class="result">
     <img class="result" src ='' style ="opacity:0;"/>
@@ -144,6 +157,17 @@
     </div>
 
     <script>
+    function EnableNextButton(input)
+    {
+      if(input.length > 0 && !isNaN(input) && !(parseInt(input) <= 0))
+      {
+          document.getElementById("savechanges").childNodes[0].disabled = false;
+      }
+      else
+      {
+          document.getElementById("savechanges").childNodes[0].disabled = true;
+      }
+    }
     function SavePath()
     {
         document.getElementById("path").value = localStorage.getItem("totalpath");
@@ -160,8 +184,6 @@
       document.getElementById("content").value = "";
       localStorage.setItem("title","");
       localStorage.setItem("content","");
-      var btn  = document.getElementById("savechanges").childNodes[0];
-      btn.disabled = true;
       SetFont();
     }
 
@@ -192,11 +214,12 @@
           console.log("title",localStorage.getItem("title"));
           document.getElementsByClassName('resultContent')[0].innerHTML = localStorage.getItem("content");
 
-          var btn  = document.getElementById("savechanges").childNodes[0];
-          btn.disabled = false;
+          // var btn  = document.getElementById("savechanges").childNodes[0];
+          // btn.disabled = false;
 
           document.getElementById("amount").hidden = false;
           document.getElementById("amountinput").hidden = false;
+          document.getElementById("savechanges").hidden = false;
 
           document.getElementsByClassName('result')[0].style ="display:block";
           document.getElementsByClassName('result')[1].style ="display:block";

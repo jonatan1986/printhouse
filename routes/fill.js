@@ -7,8 +7,15 @@ exports.form = function(req, res){
 
 
 exports.save = function(req, res){
-  console.log("fill post save req.body",req.body.photodata.title);
+  console.log("fill post save req.body.title",req.body.photodata.title);
   console.log("fill post save req.name",req.user.name);
+  console.log("fill post save req.body.amount ",req.body.photodata.amount);
+  var amount = req.body.photodata.amount;
+  var title = req.body.photodata.title;
+  var content = req.body.photodata.content;
+  var path = req.body.photodata.path;
+  res.save(title,content,path,amount);
+  res.redirect('/personal');
   // Photo.create({
   //   username: req.user.name,
   //   title: req.body.photodata.title,
@@ -21,5 +28,5 @@ exports.save = function(req, res){
   //     return next(err);
   //   }
   // });
-  res.redirect('/order');
+  // res.redirect('/order');
 };

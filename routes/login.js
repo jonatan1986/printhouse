@@ -12,12 +12,8 @@ exports.submit = function(req, res, next){
       if (user) {
         // console.log("valid credentials");
         req.session.uid = user.id;
-        // console.log("login req.session.uid ",req.session.uid);
-        // console.log("login req.session.id ",req.session.id);
         res.redirect('/design');
       } else {
-        // console.log("invalid credentials");
-        // res.render('login', { title: 'Login' ,messages:"שם משתמש או סיסמא לא נכונים"});
         res.error("שם משתמש או סיסמא לא נכונים"); // original file
         res.redirect('back'); // original file
       }

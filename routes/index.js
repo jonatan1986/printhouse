@@ -6,6 +6,8 @@ var register = require('../routes/register');
 var login = require('../routes/login');
 var design = require('../routes/design');
 var fill = require('../routes/fill');
+var personal = require('../routes/personal');
+
 var app = express();
 
 
@@ -33,6 +35,8 @@ router.post('/save',design.save(dir));
 router.get('/fill',fill.form);
 router.post('/fill',fill.save);
 
+router.get('/personal',personal.form);
+// router.post('/personal',fill.save);
 
 
 module.exports = router;

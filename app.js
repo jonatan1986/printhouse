@@ -15,6 +15,7 @@ var routes = require('./routes/index');
 var router = express.Router();
 var app = express();
 var messages = require('./lib/messages');
+var order = require('./lib/order');
 var user = require('./lib/middleware/user');
 
 
@@ -47,6 +48,7 @@ app.use(express.static(path.join(__dirname, '/public')));
 // app.get('/homepage',homepage.form);
 app.use(user);
 app.use(messages);
+app.use(order);
 app.use('/', routes);
 //==========================================
 
