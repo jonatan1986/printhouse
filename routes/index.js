@@ -7,6 +7,7 @@ var login = require('../routes/login');
 var design = require('../routes/design');
 var fill = require('../routes/fill');
 var personal = require('../routes/personal');
+var status = require('../routes/status');
 
 var app = express();
 
@@ -37,6 +38,10 @@ router.post('/fill',fill.save);
 
 router.get('/personal',personal.form);
 // router.post('/personal',fill.save);
+
+
+router.get('/status',status.form);
+router.post('/status',status.submit);
 
 
 module.exports = router;

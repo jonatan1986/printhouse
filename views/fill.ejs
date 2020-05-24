@@ -138,7 +138,7 @@
           <option value="trashim">trashim</option>
         </select>
         <form  method='post' action='/fill' dir="rtl" >
-          <p><input id="title" type='text' name='photodata[title]' oninput="SetTitle(this.value)" placeholder='כותרת' maxlength="10"/></p>
+          <p><input id="title" type='text' name='photodata[title]' oninput="SetTitle(this.value)" placeholder='כותרת' maxlength="13"/></p>
           <textarea id="content" data-limit-rows=true  rows="10" cols="40"  name='photodata[content]' oninput="SetContent(this.value)" placeholder='תוכן' ></textarea>
           <p hidden><input id="path" type='text' name='photodata[path]' </p>
           <p id="savechanges" hidden="true"><input type='submit'  value='הבא' onclick="SavePath()" disabled="true"/><br><br><br>

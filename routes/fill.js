@@ -15,18 +15,19 @@ exports.save = function(req, res){
   var content = req.body.photodata.content;
   var path = req.body.photodata.path;
   res.save(title,content,path,amount);
+  // Photo.collection.remove({});
+  Photo.create({
+    username: req.user.name,
+    title: req.body.photodata.title,
+    content: req.body.photodata.content,
+    filepath: req.body.photodata.path,
+    amount: req.body.photodata.amount
+  },
+  function(err) {
+    if (err)
+    {
+      return next(err);
+    }
+  });
   res.redirect('/personal');
-  // Photo.create({
-  //   username: req.user.name,
-  //   title: req.body.photodata.title,
-  //   content: req.body.photodata.content,
-  //   filepath: req.body.photodata.path
-  // },
-  // function(err) {
-  //   if (err)
-  //   {
-  //     return next(err);
-  //   }
-  // });
-  // res.redirect('/order');
 };

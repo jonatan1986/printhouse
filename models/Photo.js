@@ -9,7 +9,8 @@ var schema = new mongoose.Schema({
   username: String,
   title: String,
   content: String,
-  filepath: String
+  filepath: String,
+  amount: String
 });
 
 
