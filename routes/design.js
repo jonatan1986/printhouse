@@ -46,10 +46,6 @@ exports.submit = function (dir) {
 
 // form.parse analyzes the incoming stream data, picking apart the different fields and files for you.
 form.on('file', (name, file) => {
-
-    // console.log("name " +file.name);
-    // console.log("file ",file.type);
-    // console.log("file.image",file.image);
     let pageValidationError = validate.validateFile(req,res,next,file.size,file.name);
     if (pageValidationError)
     {
@@ -82,12 +78,6 @@ form.on('file', (name, file) => {
        console.error(err.message);
        return;
      }
-     // res.writeHead(200, {'content-type': 'text/plain'});
-     // res.write('received upload:\n\n');
-     //
-     // // This last line responds to the form submission with a list of the parsed data and files.
-     // res.end(util.inspect({fields: fields, files: files}));
-
    });
   };
 };
@@ -108,16 +98,5 @@ exports.save = function (dir) {
         var data = req.body;
         console.log("save filename",data);
         res.locals.file = data.filename;
-        // if(data.selected == "true")
-        // {
-        //    console.log("save filename /fill",data);
-        //    res.redirect('/fill');
-        // }
-        // else
-        // {
-        //   console.log("save filename /design",data);
-        //    res.error("אנא בחר תמונה או העלה קובץ");
-        //    res.redirect('/design');
-        // }
   };
 };

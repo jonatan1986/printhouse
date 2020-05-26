@@ -5,31 +5,29 @@ var photoArray =  [];
 
 
 exports.form = function(req, res){
-  if(JSON.stringify(req.body) === '{}')
+    // console.log("deletes any");
+    // Photo.collection.remove({});
+  if(JSON.stringify(req.body) === '{}' &&  typeof res.locals.user === 'undefined')
   {
-      console.log("res.locals.user empty",req.body);
       res.render('statuslogin',{ title: 'התחברות'});
       return;
   }
-  console.log("status.js contin");
+
   Photo.find({username:req.user.name},function(err,photos){
     if(err)
     {
       return next(err);
     }
+    // console.log(photos);
     if(photos.length == 0)
     {
-      res.render('status', { title: 'לא נמצאו הזמנות'});
+      res.render('status', { title: 'לא נמצאו הזמנות',photos:photos});
     }
     else
     {
       res.render('status', { title: 'להלן ההזמנות:',photos:photos});
     }
   });
-
-  // console.log("status name" ,req.user.name);
-  // console.log("status photoArray" ,photoArray);
-  //
 };
 
 
@@ -39,18 +37,21 @@ exports.submit = function(req, res, next){
       if (err) return next(err);
       if (user)
       {
-        req.user = res.locals.user = req.body.user;
+        req.user = res.locals.user = user;
+        req.session.uid = user.id;
         Photo.find({username:data.name},function(err,photos){
           if(err)
           {
+            console.log("new err");
             return next(err);
           }
           if(photos.length == 0)
           {
-            res.render('status', { title: 'לא נמצאו הזמנות'});
+            res.render('status', { title: 'לא נמצאו הזמנות',photos:photos});
           }
           else
           {
+            // Photo.collection.remove({});
             res.render('status', { title: 'להלן ההזמנות:',photos:photos});
           }
         });

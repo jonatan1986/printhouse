@@ -10,7 +10,8 @@ var schema = new mongoose.Schema({
   title: String,
   content: String,
   filepath: String,
-  amount: String
+  amount: String,
+  font:String
 });
 
 

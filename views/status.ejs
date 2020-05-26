@@ -9,6 +9,33 @@
         top:100px;
         left:470px;
       }
+      .photos
+      {
+        display: block;
+        position: relative;
+        top:70px;
+        right:30px;
+        margin: 0px 70px;
+      }.photos img{
+        width: 800px;
+        height: 600px;
+      }.photos .photosTitle {
+          position: relative;
+          top:-450px;
+          text-align: center;
+          /* font: 40px ; */
+      }.photos .photosContent {
+            position: relative;
+            top:-450px;
+            text-align: center;
+            /* font: 20px ; */
+        }.photos .photosAmount{
+          position: relative;
+          top:10%;
+          right:110px;
+          /* font: 20px; */
+          transform: translate(0%,200%);
+        }
     </style>
   </head>
   <body>
@@ -20,11 +47,13 @@
     <h1 dir="rtl"><%= title %></h1>
     <% include topmenu %>
     <% include menu %>
+    <div dir="rtl" class="photos">
+      <% photos.forEach(function(photo) { %>
+        <pre class="photosAmount" style = "font: 20px '<%=photo.font%>'" >כמות ההזמנות:<%=photo.amount%></pre>
+        <img class="photos" src='<%=photo.filepath%>'/>
+        <pre class="photosTitle" style = "font: 40px '<%=photo.font%>'"  ><%=photo.title%></pre>
+        <pre class="photosContent" style = "font: 20px '<%=photo.font%>'" ><%=photo.content%></pre>
+      <% }) %>
+    </div>
   </body>
   </html>
-  <!-- <form method='post' enctype='multipart/form-data'>
-    <p><input type='text', name='photo[name]', placeholder='Name'/>
-    </p>
-    <p><input type='file', name='photo[image]'/></p>
-    <p><input type='submit', value='Upload'/></p>
-  </form> -->
