@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <style>
+      h1
+      {
+        position: absolute;
+        top:100px;
+        left:470px;
+      }
+      .photos
+      {
+        display: block;
+        position: relative;
+        top:70px;
+        right:30px;
+        margin: 0px 70px;
+      }.photos img{
+        width: 800px;
+        height: 600px;
+      }.photos .photosTitle {
+          position: relative;
+          top:-450px;
+          text-align: center;
+          /* font: 40px ; */
+      }.photos .photosContent {
+            position: relative;
+            top:-450px;
+            text-align: center;
+            /* font: 20px ; */
+        }.photos .photosAmount{
+          position: relative;
+          top:10%;
+          right:110px;
+          /* font: 20px; */
+          transform: translate(0%,200%);
+        }
+        .status
+        {
+          display: block;
+          position: relative;
+          top:60px;
+          right:30px;
+          margin: 0px 70px;
+        }
+    </style>
+  </head>
+  <body>
+    <h1 dir="rtl"><%= title %></h1>
+    <% include topmenu %>
+    <% include menu %>
+    <div dir="rtl" class="photos">
+      <% photos.forEach(function(photo) { %>
+        <pre class="photosUserName" style = "font: 20px trashim" >שם המזמין:<%=photo.username%></pre>
+        <pre class="photosAmount" style = "font: 20px '<%=photo.font%>'" >כמות ההזמנות:<%=photo.amount%></pre>
+        <div><input class="photoid" type='submit' value='סטאטוס' onclick="func(this)"  />
+          <p hidden >< value='<%=photo._id%>'/></p>
+        </div>
+        <img class="photos" src='<%=photo.filepath%>'/>
+        <pre class="photosTitle" style = "font: 40px '<%=photo.font%>'"  ><%=photo.title%></pre>
+        <pre class="photosContent" style = "font: 20px '<%=photo.font%>'" ><%=photo.content%></pre>
+      <% }) %>
+    </div>
+    <script>
+     function func(data)
+     {
+       var value = data.nextElementSibling.childNodes[0].nodeValue;
+       var start = value.indexOf('\'');
+       var end = value.lastIndexOf('\'');
+       var id = value.substr(start+1,end-start-1);
+     }
+    </script>
+  </body>
+  </html>

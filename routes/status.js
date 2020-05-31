@@ -1,6 +1,5 @@
 var Photo = require('../models/Photo');
 var User = require('../lib/user');
-var photoArray =  [];
 
 
 

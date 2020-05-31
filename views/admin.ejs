@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <style>
+    .username{
+        position: fixed;
+        top:240px;
+        right:500px;
+    }
+    .password{
+      position: fixed;
+      top:280px;
+      right:500px;
+    }
+    .login{
+      position: fixed;
+      top:320px;
+      right:500px;
+    }
+    .adminorders
+    {
+      position: absolute;
+      top:120px;
+      right:500px;
+    }.orders
+    {
+      position: absolute;
+      top:40px;
+      right:0px;
+    }
+    </style>
+  </head>
+  <body>
+    <% include topmenu %>
+    <% include menu %>
+<% if (!locals.user) { %>
+  <div id="openaccount">
+    <h1><%= title %></h1>
+  </div>
+   <div class="loginTitle">
+    <p>נא להכניס שם משתמש וסיסמא על מנת להתחבר</p>
+  </div>
+
+  <% include messages %>
+    <div id="adminlogin" dir="rtl">
+      <form  method='post'>
+        <p><input class="username"  type='text' name='user[name]' placeholder='שם משתמש' /></p>
+        <p><input class="password" type='password' name='user[pass]' placeholder='סיסמא' /></p>
+        <p><input class="login" type='submit' value='התחבר' /></p>
+      </form>
+    </div>
+  <%  } else { %>
+  <form action='/orders'  method="get" class="adminorders" >
+   <p>לחץ על הכפתור על מנת לראות את כל ההזמנות</p>
+   <p><input class="orders" type='submit' value='הזמנות' /></p>
+ </form>
+
+ <!-- <form action='/users'  method="get" class="adminorders" >
+  <p>לחץ על הכפתור על מנת לראות את כל ההזמנות</p>
+  <p><input class="users" type='submit' value='הזמנות' /></p>
+</form> -->
+  <% } %>
+
+  </body>
+</html>
