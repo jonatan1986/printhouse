@@ -29,21 +29,24 @@
             top:-450px;
             text-align: center;
             /* font: 20px ; */
-        }.photos .photosAmount{
+      }.photos .photosAmount{
           position: relative;
           top:10%;
           right:110px;
           /* font: 20px; */
           transform: translate(0%,200%);
-        }
-        .status
-        {
-          display: block;
-          position: relative;
-          top:60px;
-          right:30px;
-          margin: 0px 70px;
-        }
+      }.photos .photosUserName{
+        position: relative;
+        top:10%;
+        right:110px;
+        transform: translate(0%,200%);
+      }.photos .photoStatus{
+        position: relative;
+        top:10%;
+        right:110px;
+        transform: translate(0%,200%);
+      }
+
     </style>
   </head>
   <body>
@@ -53,9 +56,13 @@
     <div dir="rtl" class="photos">
       <% photos.forEach(function(photo) { %>
         <pre class="photosUserName" style = "font: 20px trashim" >שם המזמין:<%=photo.username%></pre>
-        <pre class="photosAmount" style = "font: 20px '<%=photo.font%>'" >כמות ההזמנות:<%=photo.amount%></pre>
-        <div><input class="photoid" type='submit' value='סטאטוס' onclick="func(this)"  />
-          <p hidden >< value='<%=photo._id%>'/></p>
+        <pre class="photosAmount" style = "font: 20px trashim" >כמות ההזמנות:<%=photo.amount%></pre>
+        <div class="photoStatusDiv">
+          <pre class="photoStatus"  style = "font: 20px trashim" >סטאטוס הזמנה:<%=photo.status%></pre>
+          <form  action='/updateorder' method='post'>
+          <input class="photoStatus" type='submit' value='סטאטוס הזמנה' onclick="func(this)"  />
+            <p hidden> <input  name="photodata[photoid]" value='<%=photo._id%>'></p>
+          </form>
         </div>
         <img class="photos" src='<%=photo.filepath%>'/>
         <pre class="photosTitle" style = "font: 40px '<%=photo.font%>'"  ><%=photo.title%></pre>
@@ -65,10 +72,9 @@
     <script>
      function func(data)
      {
-       var value = data.nextElementSibling.childNodes[0].nodeValue;
-       var start = value.indexOf('\'');
-       var end = value.lastIndexOf('\'');
-       var id = value.substr(start+1,end-start-1);
+       var photoId = data.nextElementSibling.childNodes[1].attributes[0].value;
+       console.log(document.getElementsByClassName("photoStatusInput"));
+       // document.getElementsByClassName("photoStatus").value  = photoId;
      }
     </script>
   </body>

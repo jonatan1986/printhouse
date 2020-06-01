@@ -16,7 +16,8 @@ exports.save = function(req, res){
   var content = req.body.photodata.content;
   var path = req.body.photodata.path;
   var font = req.body.photodata.font;
-  res.save(title,content,path,amount,font);
+  var status = 'בטיפול';
+  res.save(title,content,path,amount,font,status);
   // Photo.collection.remove({filepath: '/postcards/postcard_birdsandflowers.jpg'});
   Photo.create({
     username: req.user.name,
@@ -24,7 +25,8 @@ exports.save = function(req, res){
     content: req.body.photodata.content,
     filepath: req.body.photodata.path,
     amount: req.body.photodata.amount,
-    font: req.body.photodata.font 
+    font: req.body.photodata.font,
+    status: status
   },
   function(err) {
     if (err)

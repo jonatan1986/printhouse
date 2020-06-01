@@ -40,6 +40,7 @@ router.post('/fill',fill.save);
 router.get('/admin',admin.form);
 router.post('/admin',admin.submit);
 router.get('/orders',admin.displayOrders);
+router.post('/updateorder',admin.updateOrder);
 // router.post('/orders',admin.displayOrders);
 
 router.get('/personal',personal.form);

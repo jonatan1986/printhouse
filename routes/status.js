@@ -41,7 +41,6 @@ exports.submit = function(req, res, next){
         Photo.find({username:data.name},function(err,photos){
           if(err)
           {
-            console.log("new err");
             return next(err);
           }
           if(photos.length == 0)
