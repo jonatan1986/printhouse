@@ -42,7 +42,7 @@ exports.displayOrders = function(req, res, next)
 {
 
     Photo.find({},function(err,photos){
-      // console.log("displayOrders ",photos);
+      console.log("displayOrders ",photos);
       if(err)
       {
         return next(err);
@@ -61,23 +61,15 @@ exports.displayOrders = function(req, res, next)
 
 exports.updateOrder = function(req,res,next)
 {
-  console.log("req.body.photodata.id",req.body.photodata.photoid);
+  console.log("req.body.photodata.id:",req.body.photodata.photoid);
   var id = req.body.photodata.photoid;
-  Photo.find({_id:id},function(err,photos){
-    // console.log("displayOrders ",photos);
-    if(err)
-    {
-      return next(err);
-    }
-    // console.log(photos);
-    if(photos.length == 0)
-    {
-      console.log("no photos");
-    }
-    else
-    {
-      console.log("photo found ",photos);
-    }
+  Photo.findByIdAndUpdate({_id:id}, { status: 'מוכן' },
+  function(err, result)
+  {
+       if (err) {
+         res.send(err);
+       } else {
+         res.redirect('back');
+       }
   });
-  res.redirect('back');
 }
