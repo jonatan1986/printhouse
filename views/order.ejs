@@ -60,7 +60,7 @@
         <div class="photoStatusDiv">
           <pre class="photoStatus"  style = "font: 20px trashim" >סטאטוס הזמנה:<%=photo.status%></pre>
           <form  action='/updateorder' method='post'>
-          <input class="photoStatus" type='submit' value='סטאטוס הזמנה' onclick="func(this)"  />
+          <input class="photoStatus" type='submit' value='עדכן סטאטוס'/>
             <p hidden> <input  name="photodata[photoid]" value='<%=photo._id%>'></p>
           </form>
         </div>
@@ -69,13 +69,5 @@
         <pre class="photosContent" style = "font: 20px '<%=photo.font%>'" ><%=photo.content%></pre>
       <% }) %>
     </div>
-    <script>
-     function func(data)
-     {
-       var photoId = data.nextElementSibling.childNodes[1].attributes[0].value;
-       console.log(document.getElementsByClassName("photoStatusInput"));
-       // document.getElementsByClassName("photoStatus").value  = photoId;
-     }
-    </script>
   </body>
   </html>

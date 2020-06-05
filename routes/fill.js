@@ -7,17 +7,13 @@ exports.form = function(req, res){
 
 
 exports.save = function(req, res){
-  console.log("fill post save req.body.title",req.body.photodata.title);
-  console.log("fill post save req.name",req.user.name);
-  console.log("fill post save req.body.amount ",req.body.photodata.amount);
-  console.log("fill post save req.body.finalfont ",req.body.photodata.font);
   var amount = req.body.photodata.amount;
   var title = req.body.photodata.title;
   var content = req.body.photodata.content;
   var path = req.body.photodata.path;
   var font = req.body.photodata.font;
   var status = 'בטיפול';
-  res.save(title,content,path,amount,font,status);
+  // res.save(title,content,path,amount,font,status);
   // Photo.collection.remove({filepath: '/postcards/postcard_birdsandflowers.jpg'});
   Photo.create({
     username: req.user.name,

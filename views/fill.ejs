@@ -175,6 +175,7 @@
       var filename = localStorage.getItem('filename');
       var path = '/postcards/';
       var totalpath = path.concat(filename);
+      console.log("totalpath ",totalpath," filename ",filename);
       document.getElementById('photo').src = totalpath;
       localStorage.setItem("totalpath",totalpath);
       var x = document.getElementById("font").value;

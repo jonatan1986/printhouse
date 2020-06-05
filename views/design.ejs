@@ -115,7 +115,6 @@
               </li>
           </div>
           <% Photos.forEach(function(photo){%>
-                <!-- <h2><%=photo.name%></h2> -->
               <div class="photo">
                 <img src = '/postcards/<%=photo.path%>' style="float: right;position:abosolute; top:150px;right:120px;"/>
               </div>
@@ -124,14 +123,11 @@
           <p class="p3" ><input type='file' id="picFile" name='photo[image]'  onclick="ResetPath()" value='בחר קובץ'/></p>
           <p class="p4" ><input type='submit' onclick="SaveFileName()" value='העלה קובץ'/></p>
         </form>
-        <!-- <div>
-          <p id="savephoto" direction="rtl" class="p5" ><input type='submit' value='הבא' name='save'  disabled='true' onclick="window.location.href='/fill'" /></p>
-        </div> -->
       </div>
       <script>
             function initOnLoad()
             {
-              localStorage.removeItem("filename");
+              // localStorage.removeItem("filename");
             }
             function SaveImageName()
             {
@@ -157,26 +153,9 @@
             }
             function ResetPath()
             {
-                localStorage.setItem("filename","");
+              console.log("reset path");
+               localStorage.setItem("filename","");
             }
-          //   function sendJSON()
-          //   {
-          //     let filename = localStorage.getItem("filename");
-          //     console.log("sendJSON ", filename);
-          //     // Creating a XHR object
-          //     let xhr = new XMLHttpRequest();
-          //     let url = "/save";
-          //     // open a connection
-          //     xhr.open("POST", url, true);
-          //     // Set the request header i.e. which type of content you are sending
-          //     xhr.setRequestHeader("Content-Type", "application/json");
-          //     // Converting JSON data to string
-          //     var data = JSON.stringify({ "filename": filename});
-          //
-          //     // Sending data with the request
-          //     xhr.send(data);
-          //     // window.location.href = "/fill";
-          // }
 
        </script>
   </body>

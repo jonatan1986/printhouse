@@ -176,9 +176,10 @@
 
 
 body {
+  background-image: url(5281-dogbone-white.jpg);
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-color: #d4bb4c
+  background-color: #d4bb4c;
 }
 
 /* a {
@@ -191,7 +192,7 @@ body {
 } */
 
 h1{
-  color: #994699;  font: 60px "Serif";text-align: center;
+  color: blue;  font: 60px "Serif";text-align: center;
 }
 
 #contacttitle h1{

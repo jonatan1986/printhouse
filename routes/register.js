@@ -15,8 +15,7 @@ exports.submit = function(req, res, next){
         res.error("שם משתמש כבר קיים במערכת");
         res.redirect('back');
     } else {
-      console.log("User Created Successfully!");
-      res.error("חשבון נוצר בהצלחה");
+      res.success("חשבון נוצר בהצלחה");
       user = new User({
         name: data.name,
         pass: data.pass
