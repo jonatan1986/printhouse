@@ -4,7 +4,7 @@ sudo npm --build-from-source install bcrypt@3.0.6
 hello guys.
 this is my 1st project in web development.
 after learning from the book node.js in action, I decided to implement my own
-project.
+project. the entire project i worked with google. it was my only assistant.
 
 this project's aim is to simulate a webpage for a print house whose name ,
 is "PrintHouse". this website allows users who want to design postcards,
